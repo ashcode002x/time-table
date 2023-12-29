@@ -2,10 +2,14 @@ from django.db import models
 import datetime
 # Create your models here.
 class CourseSchedule(models.Model):
+    code = models.CharField(max_length=50)
     course = models.CharField(max_length = 200)
     teacher = models.CharField(max_length = 200)
     TNL = models.IntegerField(default = 0)
     schedule = models.ManyToManyField("TimeSchedule", verbose_name=("select time of course"))
+    year = models.IntegerField(default = 0)
+    def __str__(self):
+        return self.code+' ( '+self.course+' )'
 
 class TimeSchedule(models.Model):
     week = models.CharField(max_length = 200)
