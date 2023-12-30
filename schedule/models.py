@@ -21,7 +21,6 @@ class TimeSchedule(models.Model):
         obj.week = w
         obj.startTime = datetime.time(hour=st,minute=0,second=0)
         obj.endTime = datetime.time(hour=et,minute=0,second=0)
-        # print(obj.week,obj.startTime,obj.endTime)
         obj.save()
         return obj
     def __str__(self):
