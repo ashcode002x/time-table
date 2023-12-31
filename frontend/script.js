@@ -23,7 +23,13 @@ p.then((value)=>{
         if(!shouldRunAction)continue;
         var obj = null;
         var color_pick = Math.random()*100;
-        console.log(color_pick)
+        var sub_name_code = value[i].course
+            .split(' ')
+            .map(word => word[0])
+            .join('');
+      
+        console.log(sub_name_code);
+        // console.log(color_pick)
         for (let index = 0; index < schedule.length; index++) {
             let week = schedule[index].week;
             let start = schedule[index].startTime;
@@ -33,7 +39,7 @@ p.then((value)=>{
             if(obj!=null){
                 // console.log(obj)
                 obj[0].style.backgroundColor = color[Math.floor(color_pick%6)];
-                obj[0].textContent=subj_code+"\n"+value[i].course;
+                obj[0].textContent=subj_code+"\n"+sub_name_code;
             }
         }
         
