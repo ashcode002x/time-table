@@ -13,4 +13,4 @@ from schedule import models
 class ViewSet(viewsets.ModelViewSet):
     queryset = models.CourseSchedule.objects.all()
     serializer_class = ScheduleSerializer
-    
+
