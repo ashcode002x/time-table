@@ -1,12 +1,7 @@
 // Replace this URL with your actual API endpoint
 
-// #3498db - A soft blue
-// #3498db - A vibrant green
-// #e74c3c - A bold red
-// #f39c12 - A warm orange
-// #9b59b6 - A rich purple
-// #2c3e50 - A dark grayish blue
-var color=['#3498db','#3498db','#e74c3c','#2ecc71','#9b59b6','#ff9800']
+
+var color=['#3498db','#3bbd2d','#e74c3c','#2ecc71','#9b59b6','#ff9800']
 
 const apiUrl = 'http://127.0.0.1:8000/timetable/';
 let p = fetch(apiUrl)
@@ -39,7 +34,7 @@ p.then((value)=>{
             if(obj!=null){
                 // console.log(obj)
                 obj[0].style.backgroundColor = color[Math.floor(color_pick%6)];
-                obj[0].textContent=subj_code+"\n"+sub_name_code;
+                obj[0].textContent=subj_code.toUpperCase()+"\n"+sub_name_code;
             }
         }
         
