@@ -3,27 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <title>Timetable</title>
 </head>
 <body>
@@ -132,11 +112,23 @@
         <td class="06-Thursday"></td>
         <td class="06-Friday"></td>
       </tr>
-      
     </tbody>
   </table>
-
-
+  <form id="subjects" method="get">
+    <label><input type="checkbox" id="mc310">Software Engineering</label>
+    <label><input type="checkbox" id="mc302">Data Base Management System</label>
+    <label><input type="checkbox" id="mc304">Theory of Computation</label>
+    <label><input type="checkbox" id="mc302 Lab P1 CL-1">Data Base Management System Lab P1</label>
+    <label><input type="checkbox" id="mc302 Lab P2 CL-2">Data Base Management System Lab P2</label>
+    <label><input type="checkbox" id="mc302 Lab P3 CL-3">Data Base Management System Lab P3</label>
+    <label><input type="checkbox" id="mc306">Financial Engineering</label>
+    <label><input type="checkbox" id="mc308">Computer Networks</label>
+    <label><input type="checkbox" id="mc312 Lab P1 CL-1">Artificial Intelligence Lab P1</label>
+    <label><input type="checkbox" id="mc312 Lab P2 CL-2">Artificial Intelligence Lab P2</label>
+    <label><input type="checkbox" id="mc312 Lab P3 CL-3">Artificial Intelligence Lab P3</label>
+    <label><input type="checkbox" id="co326">Object Oriented Software Engineering</label>
+    <button type="submit" onclick="afterForm()">Submit</button>
+</form>
 </body>
 <script src="https://kit.fontawesome.com/7fca1e8f41.js" crossorigin="anonymous"></script>
 <script src="./script.js"></script>

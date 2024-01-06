@@ -1,18 +1,32 @@
-// Replace this URL with your actual API endpoint
+const apiUrl = "http://127.0.0.1:8000/timetable/";
 
 function checkIfDataIsStale(value) {
   const cachedTimestamp = value;
-
   if (cachedTimestamp) {
     const currentTime = new Date().getTime();
     const halfHour = 60 * 60 * 1000; // Half hour in milliseconds
-
     return currentTime - parseInt(cachedTimestamp) > halfHour;
   }
-
   // If there's no cached timestamp, consider data as stale to fetch a fresh one
   return true;
 }
+
+function afterForm() {
+  const validSubject = [];
+  var checkboxes = document.querySelectorAll('#subjects input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox){
+    if(checkbox.checked){
+      validSubject.push(checkbox.id);
+    }
+  })
+  console.log(validSubject);
+  sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
+}
+
+// session of valid subject 
+const validSubject = JSON.parse(sessionStorage.getItem('validSubjects'));
+console.log(validSubject);
+
 
 var color = [
   "#3498db",
@@ -22,44 +36,43 @@ var color = [
   "#9b59b6",
   "#ff9800",
   "#1abc9c",
-  "#f39c12",
-  "#c0392b",
-  "#27ae60",
+  "#6c12f3",
+  "#32870b",
+  "#acae27",
   "#8e44ad",
-  "#3498db",
+  "#db344d",
 ];
 
-const apiUrl = "http://127.0.0.1:8000/timetable/";
 
+// session
 const ScheduleData = localStorage.getItem("ScheduleData");
 const isStale = checkIfDataIsStale(ScheduleData);
-
+//assign api to null
 var api_data = null;
-if (ScheduleData && !isStale) {
+
+if (ScheduleData && !isStale) { //work when api_data store in session or local storage so no need to call api unnecessary 
   api_data = JSON.parse(ScheduleData);
   console.log(api_data);
-} else {
+} else { // if session get old or api_data not found then run this javascript store api then store in session
   let p = fetch(apiUrl);
   p.then((value) => {
     return value.json();
   }).then((value) => {
-    console.log(value);
+    // console.log(value);
     api_data = value;
     localStorage.setItem("ScheduleData", JSON.stringify(value));
   });
 }
-// console.log(api_data)
+// if api data posses something 
 if (api_data != null) {
-  let itr = 0;
+  let itr = 0; // this is only work on color code of subject so different color getting
   for (let i = 0; i < api_data.length; i++) {
     let subj_code = api_data[i].code;
     let schedule = api_data[i].schedule;
-    var invalidGroup = ["P2", "P3", "mc312"];
-    // if(subj_code.index(validGroup)==-1)continue;
-    var shouldRunAction = invalidGroup.every(
-      (substring) => subj_code.indexOf(substring) === -1
-    );
-    if (!shouldRunAction) continue;
+
+    var shouldRun = validSubject.indexOf(subj_code)!=-1;
+    if(!shouldRun)continue;
+
     var obj = null;
     var color_pick = api_data[i].id;
     color_pick = i + itr;
@@ -68,8 +81,6 @@ if (api_data != null) {
       .map((word) => word[0])
       .join("");
 
-    // console.log(sub_name_code);
-    // console.log(color_pick)
     for (let index = 0; index < schedule.length; index++) {
       let week = schedule[index].week;
       let start = schedule[index].startTime;
