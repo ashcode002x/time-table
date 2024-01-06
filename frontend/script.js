@@ -5,9 +5,9 @@ function checkIfDataIsStale(value) {
 
   if (cachedTimestamp) {
     const currentTime = new Date().getTime();
-    const halfHourInMillis = 60 * 60 * 1000; // Half hour in milliseconds
+    const halfHour = 60 * 60 * 1000; // Half hour in milliseconds
 
-    return currentTime - parseInt(cachedTimestamp) > halfHourInMillis;
+    return currentTime - parseInt(cachedTimestamp) > halfHour;
   }
 
   // If there's no cached timestamp, consider data as stale to fetch a fresh one
