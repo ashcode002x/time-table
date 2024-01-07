@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('.env').config();
 const apiUrl = process.env.API_URL;
 // const apiUrl = ${process.env.API};
 
