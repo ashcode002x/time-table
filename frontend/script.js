@@ -1,4 +1,6 @@
-const apiUrl = str(${process.env.API});
+require('dotenv').config();
+const apiUrl = process.env.API_URL;
+// const apiUrl = ${process.env.API};
 
 function checkIfDataIsStale(value) {
   const cachedTimestamp = value;
