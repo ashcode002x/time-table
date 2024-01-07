@@ -1,5 +1,4 @@
-require('.env').config();
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.REACT_APP_API_URL
 // const apiUrl = ${process.env.API};
 
 function checkIfDataIsStale(value) {
