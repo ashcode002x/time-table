@@ -22,7 +22,7 @@ fetch('/.netlify/functions/api')
           validSubject.push(checkbox.id);
         }
       })
-      // console.log(validSubject);
+      console.log(validSubject);
       sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
     }
 
