@@ -1,4 +1,4 @@
-const apiUrl = str(API);
+const apiUrl = str(${process.env.API});
 
 function checkIfDataIsStale(value) {
   const cachedTimestamp = value;
