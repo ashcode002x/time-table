@@ -22,13 +22,13 @@ fetch('/.netlify/functions/api')
           validSubject.push(checkbox.id);
         }
       })
-      console.log(validSubject);
+      // console.log(validSubject);
       sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
     }
 
     // session of valid subject 
     const validSubject = JSON.parse(sessionStorage.getItem('validSubjects'));
-    console.log(validSubject);
+    console.log("valid subject ",validSubject);
 
 
     var color = [
