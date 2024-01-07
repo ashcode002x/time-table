@@ -1,4 +1,10 @@
-const apiUrl = process.env.API_URL;
+var apiUrl;
+fetch('/.netlify/functions/api')
+  .then(response => response.json())
+  .then(data => {
+    apiUrl = data.apiUrl;
+    // Use apiUrl in your code
+  });
 // const apiUrl = ${process.env.API};
 
 function checkIfDataIsStale(value) {
