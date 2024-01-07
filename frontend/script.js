@@ -6,7 +6,7 @@ function afterForm() {
       validSubject.push(checkbox.id);
     }
   })
-  console.log(validSubject);
+  // console.log(validSubject);
   sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
 }
 fetch('/.netlify/functions/api')
@@ -28,7 +28,7 @@ fetch('/.netlify/functions/api')
 
     // session of valid subject 
     const validSubject = JSON.parse(sessionStorage.getItem('validSubjects'));
-    console.log("valid subject ",validSubject);
+    // console.log("valid subject ",validSubject);
 
 
     var color = [
@@ -55,7 +55,7 @@ fetch('/.netlify/functions/api')
 
     if (ScheduleData && !isStale) { //work when api_data store in session or local storage so no need to call api unnecessary 
       api_data = JSON.parse(ScheduleData);
-      console.log(api_data);
+      // console.log(api_data);
     } else { // if session get old or api_data not found then run this javascript store api then store in session
       let p = fetch(apiUrl);
       p.then((value) => {
