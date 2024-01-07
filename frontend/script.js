@@ -1,13 +1,11 @@
-var apiUrl;
 fetch('/.netlify/functions/api')
   .then(response => response.json())
   .then(data => {
-    apiUrl = data.apiUrl;
+    const apiUrl = data.apiUrl;
     console.log(apiUrl);
     // Use apiUrl in your code
-  });
-console.log(apiUrl);
-// const apiUrl = ${process.env.API};
+    console.log(apiUrl);
+    // const apiUrl = ${process.env.API};
 
 function checkIfDataIsStale(value) {
   const cachedTimestamp = value;
@@ -104,3 +102,5 @@ if (api_data != null) {
     }
   }
 }
+
+  });
