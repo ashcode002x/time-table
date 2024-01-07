@@ -1,4 +1,4 @@
-const apiUrl = "http://127.0.0.1:8000/timetable/";
+const apiUrl = "https://aashish836863.pythonanywhere.com/timetable/";
 
 function checkIfDataIsStale(value) {
   const cachedTimestamp = value;
