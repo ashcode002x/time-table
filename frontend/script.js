@@ -3,6 +3,7 @@ fetch('/.netlify/functions/api')
   .then(response => response.json())
   .then(data => {
     apiUrl = data.apiUrl;
+    console.log(apiUrl);
     // Use apiUrl in your code
   });
 console.log(apiUrl);
