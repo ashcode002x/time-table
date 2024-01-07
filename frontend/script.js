@@ -1,3 +1,14 @@
+function afterForm() {
+  const validSubject = [];
+  var checkboxes = document.querySelectorAll('#subjects input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox){
+    if(checkbox.checked){
+      validSubject.push(checkbox.id);
+    }
+  })
+  console.log(validSubject);
+  sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
+}
 fetch('/.netlify/functions/api')
   .then(response => response.json())
   .then(data => {
@@ -14,17 +25,6 @@ fetch('/.netlify/functions/api')
       return true;
     }
 
-    function afterForm() {
-      const validSubject = [];
-      var checkboxes = document.querySelectorAll('#subjects input[type="checkbox"]');
-      checkboxes.forEach(function(checkbox){
-        if(checkbox.checked){
-          validSubject.push(checkbox.id);
-        }
-      })
-      console.log(validSubject);
-      sessionStorage.setItem('validSubjects',JSON.stringify(validSubject));
-    }
 
     // session of valid subject 
     const validSubject = JSON.parse(sessionStorage.getItem('validSubjects'));
